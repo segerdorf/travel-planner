@@ -1,0 +1,56 @@
+﻿body {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.navbar {
+    height: 100px;
+
+}
+
+.navbar .navbar-brand {
+    padding-top: 7px;
+}
+
+#panel {
+    margin-top: 50px;
+}
+
+.fa-long-arrow-down {
+    margin-bottom: 20px;
+    margin-top: 8px;
+}
+
+.body-content {
+    width: 90%;
+}
+
+#input-field {
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+.station-suggestion-list {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    padding-right: 30px;
+    opacity: 0.9;
+}
+
+#transit-icon-list {
+    margin: 25px 0;
+}
+
+#modal-forecast {
+    font-size: 1.5em;
+    margin-top: 30px;
+}
+
+#search-field {
+    margin-top: 20px;
+}
+
+.modal-content {
+    background-color: rgba(255,255,255,0.8) !important;
+}

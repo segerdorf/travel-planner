@@ -1,0 +1,93 @@
+﻿@using System.Web.Optimization
+@model dynamic
+@{
+    ViewBag.Title = "Travel Planner";
+}
+
+<div class="row" id="search-field">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="alert alert-danger" role="alert" style="display:none" id="error-alert"></div>
+        <h1 class="text-center">Vart vill du resa?</h1>
+        <div class="row" id="input-field">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group input-group-lg">
+                        <input type="text" class="form-control" id="origin" required placeholder="Jag vill resa från...">
+                        <span class="input-group-addon">
+                            <i class="fa fa-search"></i>
+                        </span>
+                    </div>
+                    <div class="list-group station-suggestion-list" id="origin-suggestions"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group input-group-lg">
+                        <input type="text" class="form-control" id="destination" required placeholder="Jag vill resa till...">
+                        <span class="input-group-addon">
+                            <i class="fa fa-search"></i>
+                        </span>
+                    </div>
+                    <div class="list-group station-suggestion-list" id="destination-suggestions"></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-md-offset-3">
+                <div class="form-group">
+                    <input type="text" class="form-control input-lg" id="departure-time" required value="@DateTime.Now.ToString("yyyy-MM-dd HH:mm")" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <button type="submit" class="btn btn-primary btn-block btn-lg" id="search-btn" data-loading-text="Söker...">Sök resa</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row hide" id="results-field">
+    <div class="col-md-6 col-md-offset-3">
+        <div id="panel" class="panel panel-info">
+            <div class="panel-heading"><h4 id="panel-heading"></h4></div>
+            <div class="list-group panel-body" id="result-list">
+            </div>
+        </div>
+        <input type="button" class="btn btn-default" id="new-search" value="Sök ny resa" />
+    </div>
+</div>
+
+<div class="modal fade" id="trip-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Din resa <span class="text-muted" id="modal-date"></span></h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <label>Avgång</label>
+                    <h4 id="modal-origin-name"></h4>
+                    <p id="modal-departure-time"></p>
+                </div>
+                <ul class="list-unstyled list-inline" id="transit-icon-list"></ul>
+                <div>
+                    <label>Ankomst</label>
+                    <h4 id="modal-destination-name"></h4>
+                    <p id="modal-arrival-time"></p>
+                </div>
+                <p id="modal-forecast">
+                    Väderprognos vid ankomst:
+                    <span id="modal-weather"></span>
+                    <i class="fa fa-thermometer-half fa-fw" aria-hidden="true"><span id="modal-temperature"></span></i>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/js"),
+}
