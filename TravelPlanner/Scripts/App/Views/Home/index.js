@@ -1,7 +1,5 @@
 ﻿var Views_Home_index = function () {
 
-    var url = "http://localhost/api/search/";
-
     $(document).ready(function () {
         var locationSearch;
         var selectedOrigin;
@@ -85,13 +83,12 @@
                     showErrorMessage("Servicen är för tillfället otillgänglig. Vänlig försök igen senare.");
                 }
                 btn.button("reset");
-
             });
         });
 
         $("#new-search").on("click",
             function () {
-                location.reload();
+                location.reload(true);
             });
 
         resultList.on("click", ".list-group-item",
@@ -107,13 +104,13 @@
                 $("#modal-arrival-time").text(new Date(trip.ArrivalTime).toLocaleTimeString());
 
                 if (trip.Forecast) {
-                    backgroundUrl = "url(TravelPlanner/Content/images/" + trip.Forecast.Background + ".jpg)";
+                    backgroundUrl = "url(" + contentUrl + trip.Forecast.Background + ".jpg)";
                     $("#modal-weather").text(trip.Forecast.Weather + " - ");
                     $("#modal-temperature").text(trip.Forecast.Temperature + "C");
 
                 } else {
                     $("#modal-weather").text("Väderprognos saknas");
-                    backgroundUrl = "url(TravelPlanner/Content/images/default.jpg)";
+                    backgroundUrl = "url(" + contentUrl + "default.jpg)";
                 } 
 
                 $(".modal-dialog").css("background", backgroundUrl);
